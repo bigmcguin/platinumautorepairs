@@ -1,36 +1,55 @@
 /*
-  Theme: this site's colours, fonts and spacing.
+  Theme: Platinum Auto Repairs colours, fonts and spacing.
 
   This is the ONLY file where colours and fonts are set. Every other
   stylesheet (including the nav component) reads these custom properties.
-  The values below are placeholders for the template: replace them with
-  each site's own palette and typefaces.
+
+  Palette: cool platinum greys and a graphite ink, a cobalt accent for links
+  and buttons, and a manila "job card" colour borrowed from the paper dockets
+  used in the workshop.
 */
 
+/* Archivo: one family, used at different widths (expanded for headings,
+   normal for reading, condensed for the job card). */
+@import url("https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..800&display=swap");
+
 :root {
-  /* Colour: placeholder palette (cool paper, slate ink, eucalyptus accent) */
-  --colour-paper: #f2f4f1;          /* page background */
+  /* Colour */
+  --colour-paper: #eef0f2;          /* page background (platinum grey) */
   --colour-surface: #ffffff;        /* raised surfaces, mobile menu panel */
-  --colour-ink: #1f2a2e;            /* body text */
-  --colour-ink-muted: #56636a;      /* secondary text */
-  --colour-line: #d3d9d6;           /* borders and dividers */
-  --colour-accent: #2d6a58;         /* links, current page, focus ring */
-  --colour-accent-strong: #1d4a3d;  /* hover and pressed states */
+  --colour-ink: #18222c;            /* body text (graphite) */
+  --colour-ink-muted: #4c5864;      /* secondary text */
+  --colour-line: #c9d0d6;           /* borders and dividers */
+  --colour-accent: #1d47b8;         /* links, current page, focus ring (cobalt) */
+  --colour-accent-strong: #12318a;  /* hover and pressed states */
   --colour-on-accent: #ffffff;      /* text on accent backgrounds */
 
-  /* Fonts: system stacks so the template loads nothing extra */
-  --font-body: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-  --font-display: "Iowan Old Style", "Palatino Linotype", Palatino, "Book Antiqua", Georgia, serif;
+  --colour-band: #1a2530;           /* dark graphite bands (hero, footer) */
+  --colour-on-band: #e9edf0;        /* text on dark bands */
+  --colour-on-band-muted: #a8b3bd;  /* secondary text on dark bands */
+  --colour-band-line: #33414e;      /* dividers on dark bands */
+  --colour-band-accent: #9db6ff;    /* links and focus ring on dark bands */
+
+  --colour-docket: #f3e8c4;         /* job card paper */
+  --colour-docket-line: #cdbd8c;    /* job card ruled lines */
+  --colour-docket-ink: #2a2416;     /* job card text */
+
+  /* Fonts */
+  --font-body: "Archivo", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-display: "Archivo", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --display-stretch: 118%;          /* expanded width for headings */
+  --display-weight: 750;
+  --condensed-stretch: 78%;         /* condensed width for the job card */
 
   /* Type scale (roughly a 1.25 ratio) */
   --text-sm: 0.875rem;
   --text-base: 1.0625rem;
   --text-lg: 1.25rem;
   --text-xl: 1.6rem;
-  --text-2xl: 2.1rem;
-  --text-3xl: clamp(2.4rem, 6vw, 3.6rem);
+  --text-2xl: clamp(1.75rem, 3.5vw, 2.25rem);
+  --text-3xl: clamp(2.2rem, 6vw, 3.9rem);
   --leading-body: 1.6;
-  --leading-tight: 1.15;
+  --leading-tight: 1.1;
   --measure: 66ch;                  /* comfortable line length */
 
   /* Spacing */
@@ -42,6 +61,7 @@
   --space-6: 2rem;
   --space-7: 3rem;
   --space-8: 4.5rem;
+  --space-9: 6.5rem;
 
   /* Layout */
   --page-max-width: 72rem;
