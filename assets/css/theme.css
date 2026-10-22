@@ -9,9 +9,21 @@
   used in the workshop.
 */
 
-/* Archivo: one family, used at different widths (expanded for headings,
-   normal for reading, condensed for the job card). */
-@import url("https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..800&display=swap");
+/*
+  Archivo: one family, used at different widths (expanded for headings,
+  normal for reading, condensed for the job card).
+  Self-hosted so the page does not wait on another server. The file is
+  trimmed to widths 75-125%, weights 400-800 and the Latin characters the
+  site uses. Each page preloads it in <head>. Licence: assets/fonts/OFL.txt
+*/
+@font-face {
+  font-family: "Archivo";
+  src: url("../fonts/archivo.woff2") format("woff2");
+  font-weight: 400 800;
+  font-stretch: 75% 125%;
+  font-style: normal;
+  font-display: swap;
+}
 
 :root {
   /* Colour */
@@ -70,6 +82,7 @@
 
   /* Navigation */
   --nav-bar-height: 4rem;           /* fixed height of the top bar */
+  --nav-logo-size: 3.25rem;         /* logo beside the site name in the bar */
   --nav-link-gap: var(--space-5);
   --focus-ring: 3px solid var(--colour-accent);
   --focus-offset: 3px;

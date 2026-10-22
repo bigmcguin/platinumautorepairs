@@ -16,9 +16,12 @@
      the site is served from public_html or a subfolder.
      To link to a section of a page, add its id after a #, for example
      { label: 'Contact', href: 'index.html#contact' }.
+     logo is optional: a square image shown before the site name, with its
+     path relative to the site root. Leave it out to show the name only.
      ------------------------------------------------------------------ */
   var NAV_CONFIG = {
     siteName: 'Platinum Auto Repairs',
+    logo: 'assets/images/logo.webp',
     menuLabel: 'Main',
     items: [
       { label: 'Home', href: 'index.html' },
@@ -69,12 +72,18 @@
         escapeHtml(item.label) + '</a></li>';
     }).join('');
 
+    // The logo is decorative: the site name beside it labels the link.
+    var logo = NAV_CONFIG.logo ?
+      '<img class="site-nav__logo" src="' + resolve(NAV_CONFIG.logo).href +
+        '" alt="" width="52" height="52" decoding="async">' : '';
+
     header.classList.add('site-header');
     header.innerHTML =
       '<a class="site-nav__skip" href="#main">Skip to main content</a>' +
       '<div class="site-nav__bar">' +
         '<a class="site-nav__brand" href="' + resolve('index.html').href + '">' +
-          escapeHtml(NAV_CONFIG.siteName) + '</a>' +
+          logo +
+          '<span class="site-nav__name">' + escapeHtml(NAV_CONFIG.siteName) + '</span></a>' +
         '<button class="site-nav__toggle" type="button" aria-expanded="false"' +
           ' aria-controls="' + MENU_ID + '" aria-label="Menu">' +
           '<span class="site-nav__icon" aria-hidden="true"></span>' +

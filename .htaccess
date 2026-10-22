@@ -22,3 +22,38 @@ DirectoryIndex index.html
   RewriteEngine On
   RewriteRule (^|/)\.(?!well-known(/|$)) - [F]
 </IfModule>
+
+# ----------------------------------------------------------------------
+# Speed: compression and browser caching.
+# Pages are always rechecked so updates show straight away. CSS and JS
+# are kept for a day (file names do not change between updates). Fonts
+# and images are kept for a year: give a replaced image a new file name.
+# ----------------------------------------------------------------------
+
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/css text/plain application/javascript text/javascript image/svg+xml image/x-icon
+</IfModule>
+
+<IfModule mod_mime.c>
+  AddType font/woff2 .woff2
+  AddType image/webp .webp
+</IfModule>
+
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresDefault "access plus 1 day"
+  ExpiresByType text/html "access plus 0 seconds"
+  ExpiresByType text/css "access plus 1 day"
+  ExpiresByType application/javascript "access plus 1 day"
+  ExpiresByType text/javascript "access plus 1 day"
+  ExpiresByType font/woff2 "access plus 1 year"
+  ExpiresByType image/webp "access plus 1 year"
+  ExpiresByType image/png "access plus 1 year"
+  ExpiresByType image/x-icon "access plus 1 year"
+</IfModule>
+
+<IfModule mod_headers.c>
+  <FilesMatch "\.html?$">
+    Header set Cache-Control "no-cache"
+  </FilesMatch>
+</IfModule>
