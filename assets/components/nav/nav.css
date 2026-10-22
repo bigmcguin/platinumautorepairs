@@ -63,15 +63,29 @@
 }
 
 .site-nav__brand {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-3);
   font-family: var(--font-display);
   font-size: var(--text-lg);
   font-weight: 600;
   color: var(--colour-ink);
   text-decoration: none;
+  min-width: 0;
+}
+
+.site-nav__name {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
   min-width: 0;
+}
+
+/* Optional logo (NAV_CONFIG.logo): sized to fit inside the bar */
+.site-nav__logo {
+  flex: none;
+  width: var(--nav-logo-size);
+  height: var(--nav-logo-size);
 }
 
 .site-nav__brand:hover {
@@ -171,6 +185,23 @@
 
 .site-nav__toggle[aria-expanded="true"] .site-nav__icon::after {
   transform: rotate(-45deg);
+}
+
+/* Very narrow phones: shrink the brand so the whole name fits */
+@media (max-width: 379.98px) {
+  .site-nav__bar {
+    gap: var(--space-2);
+  }
+
+  .site-nav__brand {
+    gap: var(--space-2);
+    font-size: var(--text-base);
+  }
+
+  .site-nav__logo {
+    width: calc(var(--nav-logo-size) * 0.85);
+    height: calc(var(--nav-logo-size) * 0.85);
+  }
 }
 
 /* Desktop: 768 px and wider */
